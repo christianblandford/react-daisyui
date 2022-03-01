@@ -1,0 +1,22 @@
+import clsx from "clsx"
+
+const variants = {
+  'info': '{{dashCase name}}-info',
+  'success': '{{dashCase name}}-success',
+  'warning': '{{dashCase name}}-warning',
+  'error': '{{dashCase name}}-error',
+}
+
+export type {{properCase name}}Props = {
+  variant?: keyof typeof variants
+  children?: React.ReactNode
+  className?: string
+}
+
+export const {{properCase name}} = ({variant, className, children, ...rest}: {{properCase name}}Props) => { 
+  return (
+    <div {...rest} className={clsx(className, '{{dashCase name}}', variant && variants[variant], '')}>
+      {children}
+    </div>
+  )
+}
