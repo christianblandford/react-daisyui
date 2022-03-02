@@ -7,10 +7,18 @@ export type MaskProps = {
   shape: MaskType
   children?: React.ReactNode
   className?: string
+  wrapWithDiv?: boolean
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const Mask = ({ className, children, shape, ...rest }: MaskProps) => {
+export const Mask = ({ className, children, shape, wrapWithDiv = false, ...rest }: MaskProps) => {
+  if (wrapWithDiv) {
+    return (
+      <div {...rest} className={clsx(className, 'mask', masks[shape])}>
+        {children}
+      </div>
+    )
+  }
   return (
     <>
       {React.Children.map(children, (child) =>

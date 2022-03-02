@@ -42,11 +42,15 @@ Documentation and list of components is available in the [Storybook](https://chr
 
 First, clone this repo.
 
-Then run yarn to install all of the dependencies.
+Then run yarn to install all of the dependencies:
+
 `yarn`
 
 Now you can launch the storybook dev server by running:
-`yarn start` which will automatically open your browser to storybook.
+
+`yarn start`
+
+Your browser will automatically open to Storybook.
 
 ## Creating new components
 
@@ -61,3 +65,7 @@ Ensure you export the component, at the right levels, or it will not be availabl
 Run `yarn predeploy` to build the new storybook
 
 Run `yarn deploy-storybook` to automatically deploy to GH pages.
+
+## Create a new release
+
+`yarn release`

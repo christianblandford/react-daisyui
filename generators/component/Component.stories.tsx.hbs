@@ -12,7 +12,7 @@ const meta: Meta = {
 
 export default meta;
 
-const Template: Story = ({className, children, ...rest}) => <{{ properCase name }} className={className} {...rest}>{children}</{{ properCase name }}>;
+const Template: Story = ({ children, ...rest}) => <{{ properCase name }} {...rest}>{children}</{{ properCase name }}>;
 
 export const Default = Template.bind({});
 Default.args = {};

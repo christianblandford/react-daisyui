@@ -19,7 +19,7 @@ export type CardProps = {
 export const Card = ({
   compact = false,
   bordered = false,
-  className = 'bg-base-100',
+  className = 'bg-base-100 p-4',
   shadow = 'xl',
   children,
   ...rest

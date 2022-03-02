@@ -1,0 +1,58 @@
+.modal {
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  visibility: hidden;
+  z-index: 999;
+  --tw-bg-opacity: 1;
+  --tw-bg-opacity: 0.4;
+  background-color: hsla(var(--nf) / var(--tw-bg-opacity, 1));
+  transition-property: background-color, border-color, color, fill, stroke, opacity, box-shadow,
+    transform;
+  transition-duration: 0.15s;
+  transition-duration: 0.2s;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+  overflow-y: hidden;
+  -ms-scroll-chaining: none;
+  overscroll-behavior: contain;
+}
+@media (min-width: 640px) {
+  .modal {
+    align-items: center;
+  }
+}
+.modal-open,
+.modal-toggle:checked + .modal,
+.modal:target {
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+}
+.modal-open,
+.modal-toggle:checked + .modal,
+.modal:target {
+  opacity: 1;
+  pointer-events: auto;
+  visibility: visible;
+}
+.modal-open .modal-box,
+.modal-toggle:checked + .modal .modal-box,
+.modal:target .modal-box {
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-translate-y: 0px;
+}
+.modal-open .modal-box,
+.modal-toggle:checked + .modal .modal-box,
+.modal:target .modal-box {
+  --tw-scale-x: 1;
+  --tw-scale-y: 1;
+  --tw-translate-y: 0px;
+}

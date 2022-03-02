@@ -1,0 +1,24 @@
+<script>
+    // Handle theme changes
+
+    // Since the storybook-addon-themes addon sets class, and daisyUI uses data-theme,
+    // we have to do some custom handling. Theme changes occur in preview.js and set
+    // a local storage value. We will listen to changes to this value and update
+    // the data-theme attribute on the storybook preview iframe
+
+    // Get/use initial or default values
+    const defaultTheme = 'light'
+    let cachedTheme = window.localStorage.getItem('react-daisyui-preview-theme') || defaultTheme
+    document.documentElement.setAttribute('data-theme', cachedTheme)
+
+    // Listen for changes to localstorage
+    window.addEventListener('storage', () => {
+        const theme = window.localStorage.getItem('react-daisyui-preview-theme')
+        if (theme !== cachedTheme) {
+            // Update data-theme attribute
+            document.documentElement.setAttribute('data-theme', theme || defaultTheme)
+            // update theme variable to the new theme
+            cachedTheme = theme || defaultTheme
+        }
+    });
+</script>

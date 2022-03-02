@@ -1,21 +1,22 @@
-import { ClipboardCheckIcon } from "@heroicons/react/outline";
-import { Meta, Story } from "@storybook/react";
+import { ClipboardCheckIcon } from '@heroicons/react/outline'
+import { Meta, Story } from '@storybook/react'
 
-import { Button } from "./Button";
+import { Button } from './Button'
 
 const meta: Meta = {
-  title: "Actions/Button",
+  title: 'Actions/Button',
   component: Button,
   parameters: {
     controls: { expanded: true },
   },
-};
+}
 
-export default meta;
+export default meta
 
-const Template: Story = ({ children = "Button", ...rest }) => (
-  <Button {...rest}>{children}</Button>
-);
+const Template: Story = ({ children = 'Button', ...rest }) => <Button {...rest}>{children}</Button>
+
+export const Default = Template.bind({})
+Default.args = {}
 
 export const BrandColors = () => {
   return (
@@ -27,8 +28,8 @@ export const BrandColors = () => {
       <Button variant="ghost">Ghost</Button>
       <Button variant="link">Link</Button>
     </div>
-  );
-};
+  )
+}
 
 export const StateColors = () => {
   return (
@@ -38,8 +39,8 @@ export const StateColors = () => {
       <Button variant="warning">warning</Button>
       <Button variant="error">error</Button>
     </div>
-  );
-};
+  )
+}
 
 export const Outline = () => {
   return (
@@ -55,8 +56,8 @@ export const Outline = () => {
         Accent
       </Button>
     </div>
-  );
-};
+  )
+}
 
 export const OutlineWithStateColors = () => {
   return (
@@ -74,8 +75,8 @@ export const OutlineWithStateColors = () => {
         error
       </Button>
     </div>
-  );
-};
+  )
+}
 
 export const Sizes = () => {
   return (
@@ -85,32 +86,32 @@ export const Sizes = () => {
       <Button size="sm">sm</Button>
       <Button size="xs">xs</Button>
     </div>
-  );
-};
+  )
+}
 
-export const Wide = Template.bind({});
-Wide.args = { children: "Wide Button", wide: true };
+export const Wide = Template.bind({})
+Wide.args = { children: 'Wide Button', wide: true }
 
-export const Icon = Template.bind({});
+export const Icon = Template.bind({})
 Icon.args = {
-  children: "Button With Icon",
+  children: 'Button With Icon',
   icon: <ClipboardCheckIcon className="h-6 w-6" />,
-};
+}
 
-export const Loading = Template.bind({});
+export const Loading = Template.bind({})
 Loading.args = {
-  children: "Loading Button",
+  children: 'Loading Button',
   isLoading: true,
-};
+}
 
-export const Disabled = Template.bind({});
+export const Disabled = Template.bind({})
 Disabled.args = {
-  children: "Disabled Button",
+  children: 'Disabled Button',
   disabled: true,
-};
+}
 
-export const NoClickAnimation = Template.bind({});
+export const NoClickAnimation = Template.bind({})
 NoClickAnimation.args = {
-  children: "No Click Animation",
+  children: 'No Click Animation',
   noAnimation: true,
-};
+}
