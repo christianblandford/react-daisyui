@@ -1,22 +1,23 @@
-import clsx from "clsx";
+import React from 'react'
+import clsx from 'clsx'
 
 const variants = {
-  primary: "progress-primary",
-  secondary: "progress-secondary",
-  accent: "progress-accent",
-  info: "progress-info",
-  success: "progress-success",
-  warning: "progress-warning",
-  error: "progress-error",
-};
+  primary: 'progress-primary',
+  secondary: 'progress-secondary',
+  accent: 'progress-accent',
+  info: 'progress-info',
+  success: 'progress-success',
+  warning: 'progress-warning',
+  error: 'progress-error',
+}
 
 export type ProgressProps = {
-  variant?: keyof typeof variants;
-  children?: React.ReactNode;
-  className?: string;
-  value: number;
-  max?: number;
-};
+  variant?: keyof typeof variants
+  children?: React.ReactNode
+  className?: string
+  value: number
+  max?: number
+}
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
 export const Progress = ({
@@ -30,9 +31,9 @@ export const Progress = ({
   return (
     <progress
       {...rest}
-      className={clsx(className, "progress", variant && variants[variant])}
+      className={clsx(className, 'progress', variant && variants[variant])}
       value={value}
       max={max}
     ></progress>
-  );
-};
+  )
+}

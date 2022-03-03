@@ -1,13 +1,16 @@
-import React from 'react'
-import '../src/index.css'
-import { AppProvider } from '../src/providers/app'
+import '../tailwind.css';
 
+// https://storybook.js.org/docs/react/writing-stories/parameters#global-parameters
 export const parameters = {
-  actions: { argTypesRegex: '^on[A-Z].*' },
+  // https://storybook.js.org/docs/react/essentials/actions#automatically-matching-args
+  actions: { argTypesRegex: '^on.*' },
   themes: {
     default: 'light',
     onChange: (theme) =>
-      window.localStorage.setItem('react-daisyui-preview-theme', theme ? theme.class : undefined),
+      window.localStorage.setItem(
+        'react-daisyui-preview-theme',
+        theme ? theme.class : undefined
+      ),
     list: [
       { name: 'light', class: 'light', color: '#570df8' },
       { name: 'dark', class: 'dark', color: '#793ef9' },
@@ -37,12 +40,4 @@ export const parameters = {
       { name: 'lemonade', class: 'lemonade', color: '#519903' },
     ],
   },
-}
-
-export const decorators = [
-  (Story) => (
-    <AppProvider>
-      <Story />
-    </AppProvider>
-  ),
-]
+};

@@ -2,31 +2,25 @@ const path = require('path')
 const TsconfigPathsPlugin = require('tsconfig-paths-webpack-plugin')
 
 module.exports = {
-  stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(js|jsx|ts|tsx)'],
+  stories: ['../src/**/*.stories.mdx', '../src/**/*.stories.@(ts|tsx|js|jsx)'],
   addons: [
+    '@storybook/addon-google-analytics',
     '@storybook/addon-links',
     '@storybook/addon-essentials',
     'storybook-addon-themes',
     {
-      /**
-       * Fix Storybook issue with PostCSS@8
-       * @see https://github.com/storybookjs/storybook/issues/12668#issuecomment-773958085
-       */
       name: '@storybook/addon-postcss',
       options: {
         postcssLoaderOptions: {
           implementation: require('postcss'),
-          postcssOptions: {
-            ident: 'postcss',
-            plugins: [require('tailwindcss'), require('autoprefixer')],
-          },
         },
       },
     },
   ],
-  framework: '@storybook/react',
-  core: {
-    builder: 'webpack5',
+
+  // https://storybook.js.org/docs/react/configure/typescript#mainjs-configuration
+  typescript: {
+    check: true, // type-check stories during Storybook build
   },
   webpackFinal: async (config) => {
     config.resolve.plugins = config.resolve.plugins || []

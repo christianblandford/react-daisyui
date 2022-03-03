@@ -18,9 +18,24 @@ First [install tailwindcss](https://tailwindcss.com/docs/installation)
 
 Then [install and configure daisyUI](https://daisyui.com/docs/install/)
 
-Finally, install this package:
+Install this package:
 
 `yarn add react-daisyui -D` or `npm add react-daisyui -D`
+
+Finally **(and most importantly)**, add this package to your content/purge array in your tailwind.config.js. This library WILL NOT WORK properly without doing this.
+
+Example:
+
+```
+module.exports = {
+  content: [
+    './pages/**/*.{html,js}',
+    './components/**/*.{html,js}',
+    './node_modules/react-daisyui/dist/*.js'
+  ],
+  // ...
+}
+```
 
 # Usage
 
@@ -48,7 +63,7 @@ Then run yarn to install all of the dependencies:
 
 Now you can launch the storybook dev server by running:
 
-`yarn start`
+`yarn storybook`
 
 Your browser will automatically open to Storybook.
 
@@ -59,12 +74,6 @@ Run `yarn generate component ${your_new_component_name}`.
 The generator will ask a few questions and generate the component for you.
 
 Ensure you export the component, at the right levels, or it will not be available to dependent packages.
-
-## Publishing new storybook
-
-Run `yarn predeploy` to build the new storybook
-
-Run `yarn deploy-storybook` to automatically deploy to GH pages.
 
 ## Create a new release
 

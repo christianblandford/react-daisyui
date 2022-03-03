@@ -1,7 +1,7 @@
 import { ClipboardCheckIcon } from '@heroicons/react/outline'
 import { Meta, Story } from '@storybook/react'
 
-import { Button } from './Button'
+import { Button } from '../'
 
 const meta: Meta = {
   title: 'Actions/Button',

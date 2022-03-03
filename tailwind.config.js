@@ -1,13 +1,13 @@
 module.exports = {
-  mode: "jit",
-  content: ["./src/**/*.{js,jsx,ts,tsx}", "./public/index.html"],
-  darkMode: "media",
+  mode: 'jit',
+  content: ['./src/**/*.{js,jsx,ts,tsx}', './public/index.html'],
+  darkMode: 'media',
   variants: {
     extend: {
-      backgroundColor: ["active"],
+      backgroundColor: ['active'],
     },
   },
-  plugins: [require("@tailwindcss/typography"), require("daisyui")],
+  plugins: [require('@tailwindcss/typography'), require('daisyui')],
   daisyui: {
     styled: true,
     themes: true,
@@ -15,6 +15,6 @@ module.exports = {
     utils: true,
     logs: true,
     rtl: false,
-    darkTheme: "dark",
+    darkTheme: 'dark',
   },
 };

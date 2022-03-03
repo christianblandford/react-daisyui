@@ -1,6 +1,5 @@
+import React from 'react'
 import clsx from 'clsx'
-import { MouseEventHandler } from 'react'
-import { createPortal } from 'react-dom'
 
 export type ModalActionProps = {
   children?: React.ReactNode

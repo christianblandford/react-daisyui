@@ -1,0 +1,21 @@
+{
+  "hooks": {
+    "after:bump": [
+      "echo Building...",
+      "npm run build",
+      "echo Building Storybook for gh-pages...",
+      "npm run build-storybook"
+    ],
+    "after:git:release": ["gh-pages -d storybook-static"],
+    "after:release": "echo Successfully released ${name} v${version} to ${repo.repository}."
+  },
+  "git": {
+    "commitMessage": "chore: release v${version}"
+  },
+  "github": {
+    "release": true
+  },
+  "npm": {
+    "publish": true
+  }
+}

@@ -3,12 +3,7 @@ import React from 'react'
 import { useState } from 'react'
 import { CollapseContent } from './CollapseContent'
 import { CollapseTitle } from './CollapseTitle'
-
-export interface CollapseContextInterface {
-  onClick: React.MouseEventHandler
-}
-
-export const CollapseContext = React.createContext<CollapseContextInterface | null>(null)
+import { CollapseContext } from './CollapseContext'
 
 export type CollapseProps = {
   focusOpens?: boolean
@@ -67,7 +62,7 @@ export const Collapse = ({
     }
   }
 
-  const handleClick: React.MouseEventHandler = (e) => {
+  const handleClick: React.MouseEventHandler = () => {
     if (stateIsOpen && clickCloses) {
       close()
     } else if (!stateIsOpen && clickOpens) {

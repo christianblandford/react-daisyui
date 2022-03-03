@@ -1,3 +1,4 @@
+import React from 'react'
 import clsx from 'clsx'
 
 export type RadialProgressProps = {
@@ -22,9 +23,9 @@ export const RadialProgress = ({
   ...rest
 }: RadialProgressProps) => {
   const style = {
-    '--value': value,
-    ...(thickness && { '--thickness': thickness }),
-    ...(size && { '--size': size }),
+    ...{ ['--value' as any]: value },
+    ...(thickness && { ['--thickness' as any]: thickness }),
+    ...(size && { ['--size' as any]: size }),
   } as React.CSSProperties
   return (
     <div {...rest} className={clsx(className, 'radial-progress')} style={style}>

@@ -1,7 +1,5 @@
 import clsx from 'clsx'
-
-import { gaps } from '@/const'
-import { GapOptions } from '@/types'
+import React from 'react'
 
 const sizes = {
   xs: 'btn-xs',
@@ -46,7 +44,6 @@ export type ButtonProps = {
   type?: 'button' | 'submit' | 'reset'
   children: React.ReactNode | string
   icon?: React.ReactNode
-  iconGap?: GapOptions
   iconPosition?: 'start' | 'end'
 }
 
@@ -64,7 +61,6 @@ export const Button = ({
   disabled = false,
   type = 'button',
   icon,
-  iconGap = '2',
   iconPosition = 'start',
   onClick,
   children,
@@ -82,7 +78,7 @@ export const Button = ({
         isLoading && 'loading',
         noAnimation && 'no-animation',
         active && 'btn-active',
-        icon && gaps[iconGap],
+        icon && 'gap-2',
         className && className
       )}
       onClick={() => !disabled && onClick && onClick()}

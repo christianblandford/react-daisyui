@@ -1,3 +1,5 @@
+import React from 'react'
+
 import clsx from 'clsx'
 
 export type H4Props = {

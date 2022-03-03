@@ -1,6 +1,6 @@
 import clsx from 'clsx'
 import React, { useContext } from 'react'
-import { CollapseContext } from '.'
+import { CollapseContext } from './CollapseContext'
 
 export type CollapseTitleProps = {
   children?: React.ReactNode

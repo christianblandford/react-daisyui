@@ -1,8 +1,7 @@
 import clsx from 'clsx'
-import { MouseEventHandler } from 'react'
+import React, { MouseEventHandler } from 'react'
 import { createPortal } from 'react-dom'
 
-import './modal.css'
 import { ModalAction } from './ModalAction'
 
 export type ModalProps = {
