@@ -15,13 +15,13 @@
     "commitArgs": [],
     "tag": true,
     "push": true,
-    "pushArgs": ["--follow-tags"]
+    "pushArgs": ["--follow-tags"],
+    "githubAssets": ["dist/", "src/", "package.json"]
   },
   "github": {
     "release": true
   },
   "npm": {
-    "publish": true,
-    "publishPath": "dist"
+    "publish": true
   }
 }
