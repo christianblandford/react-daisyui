@@ -1,6 +1,12 @@
 module.exports = {
   mode: 'jit',
-  content: ['./src/**/*.{js,jsx,ts,tsx}', './index.html', '../dist/**/*.js'],
+  content: [
+    './index.tsx',
+    './src/**/*.{js,jsx,ts,tsx}',
+    './index.html',
+    './node_modules/react-daisyui/**/*.js',
+    //  '../dist/**/*.js'
+  ],
   darkMode: 'media',
   variants: {
     extend: {

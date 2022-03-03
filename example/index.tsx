@@ -4,16 +4,24 @@ import * as ReactDOM from 'react-dom'
 
 import './index.css'
 
-import { Button } from '../dist'
+import { Button, Collapse, H1, Modal } from 'react-daisyui'
 
 const App = () => {
+  const [isOpen, setIsOpen] = React.useState(false)
   return (
-    <div>
-      <Button>Test</Button>
-      <Button variant="accent">Test</Button>
-      <Button variant="accent" isLoading>
-        Test
-      </Button>
+    <div className="p-8 flex flex-col gap-6">
+      <div className="p-4 flex flex-row gap-6">
+        <Modal isOpen={isOpen} onClose={() => setIsOpen(false)}>
+          <H1>This is a modal</H1>
+        </Modal>
+        <Button onClick={() => setIsOpen(true)} disabled={isOpen}>
+          Open Modal
+        </Button>
+      </div>
+      <Collapse className="bg-base-100 border border-base-content">
+        <Collapse.Title>This is a collapse with some content</Collapse.Title>
+        <Collapse.Content>This is the content</Collapse.Content>
+      </Collapse>
     </div>
   )
 }

@@ -5453,6 +5453,11 @@ react-app-polyfill@^1.0.0:
     regenerator-runtime "^0.13.3"
     whatwg-fetch "^3.0.0"
 
+react-daisyui@^0.0.3:
+  version "0.0.3"
+  resolved "https://registry.yarnpkg.com/react-daisyui/-/react-daisyui-0.0.3.tgz#e0395f035e231fcd514afa124e83d30201dd89df"
+  integrity sha512-1pgRHwAKYOlpjV60epaDkRFb2GythvexZEWk+Z9QlHoEbrTgXdgrYX17OYAEXKmUarsxjPcjhHRfGyI7zHZx5w==
+
 react-refresh@^0.9.0:
   version "0.9.0"
   resolved "https://registry.yarnpkg.com/react-refresh/-/react-refresh-0.9.0.tgz#71863337adc3e5c2f8a6bfddd12ae3bfe32aafbf"

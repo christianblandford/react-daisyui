@@ -10,6 +10,7 @@
   "dependencies": {
     "@tailwindcss/typography": "^0.5.2",
     "react-app-polyfill": "^1.0.0",
+    "react-daisyui": "^0.0.3",
     "tailwindcss": "^3.0.23"
   },
   "alias": {

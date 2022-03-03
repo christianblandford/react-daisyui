@@ -20,7 +20,7 @@ Then [install and configure daisyUI](https://daisyui.com/docs/install/)
 
 Install this package:
 
-`yarn add react-daisyui -D` or `npm add react-daisyui -D`
+`yarn add react-daisyui` or `npm add react-daisyui`
 
 Finally **(and most importantly)**, add this package to your content/purge array in your tailwind.config.js. This library WILL NOT WORK properly without doing this.
 
