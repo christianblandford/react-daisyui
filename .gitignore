@@ -3,3 +3,7 @@
 node_modules
 .cache
 dist
+example/dist
+example/.parcel-cache
+example/node_modules
+.env

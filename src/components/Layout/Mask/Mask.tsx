@@ -1,5 +1,4 @@
-import { masks } from '@/const'
-import { MaskType } from '@/types'
+import { masks, MaskType } from './masks'
 import clsx from 'clsx'
 import React from 'react'
 

@@ -2,17 +2,23 @@ import React from 'react'
 
 import clsx from 'clsx'
 
-import { shadows } from '@/const'
-import { ShadowType } from '@/types'
-
 import { CardActions } from './CardActions'
 import { CardBody } from './CardBody'
 import { CardImage } from './CardImage'
 import { CardTitle } from './CardTitle'
 
+const shadows = {
+  xs: 'shadow-xs',
+  sm: 'shadow-sm',
+  md: 'shadow-md',
+  lg: 'shadow-lg',
+  xl: 'shadow-xl',
+  '2xl': 'shadow-2xl',
+}
+
 export type CardProps = {
   bordered?: boolean
-  shadow?: ShadowType
+  shadow?: boolean | keyof typeof shadows
   className?: string
   children?: React.ReactNode
   compact?: boolean
