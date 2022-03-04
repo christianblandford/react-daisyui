@@ -1,5 +1,6 @@
 import { Card, Prose } from '@/components'
 import { Meta, Story } from '@storybook/react'
+import React from 'react'
 
 import { Swap } from './Swap'
 
@@ -116,16 +117,16 @@ export const CardFlip = Template.bind({})
 CardFlip.args = {
   flip: true,
   first: (
-    <Card className="h-40 w-60 bg-info p-4">
+    <Card className="h-40 w-60 bg-info p-4" title="Flip me">
       <Prose>
-        <h1>You can flip any element!</h1>
+        <p>You can flip any element!</p>
       </Prose>
     </Card>
   ),
   second: (
-    <Card className="h-40 w-60 bg-info p-4">
+    <Card className="h-40 w-60 bg-info p-4" title="Flip me">
       <Prose>
-        <h1>Flip me back over!</h1>
+        <p>Flip me back over!</p>
       </Prose>
     </Card>
   ),

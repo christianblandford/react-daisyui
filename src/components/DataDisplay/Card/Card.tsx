@@ -2,60 +2,94 @@ import React from 'react'
 
 import clsx from 'clsx'
 
-import { CardActions } from './CardActions'
-import { CardBody } from './CardBody'
-import { CardImage } from './CardImage'
-import { CardTitle } from './CardTitle'
+import { twMerge } from 'tailwind-merge'
 
-const shadows = {
-  xs: 'shadow-xs',
-  sm: 'shadow-sm',
-  md: 'shadow-md',
-  lg: 'shadow-lg',
-  xl: 'shadow-xl',
-  '2xl': 'shadow-2xl',
-}
+export const breakpoints = {
+  xs: 'xs:card-side',
+  sm: 'sm:card-side',
+  md: 'md:card-side',
+  lg: 'lg:card-side',
+  xl: 'xl:card-side',
+  '2xl': '2xl:card-side',
+} as Record<string, string>
 
 export type CardProps = {
+  glass?: boolean
+  layout?: 'horizontal' | 'vertical'
+  title?: React.ReactNode
   bordered?: boolean
-  shadow?: boolean | keyof typeof shadows
+  responsive?: boolean
   className?: string
+  innerClassName?: string
   children?: React.ReactNode
   compact?: boolean
+  actions?: React.ReactNode
+  actionsPosition?: 'start' | 'end'
+  figure?: React.ReactNode
+  figureOverlay?: Boolean
+  figurePosition?: 'start' | 'end'
 }
 
+export const defaultClassList = ['card', 'bg-base-100']
+
 export const Card = ({
+  glass = false,
+  layout = 'vertical',
   compact = false,
+  responsive = false,
   bordered = false,
-  className = 'bg-base-100 p-4',
-  shadow = 'xl',
+  className,
+  innerClassName,
   children,
+  title,
+  actions,
+  actionsPosition = 'end',
+  figure,
+  figureOverlay = false,
+  figurePosition = 'start',
   ...rest
 }: CardProps) => {
-  let shadowClassName
-  if (shadow === true) {
-    shadowClassName = 'shadow-xl'
-  } else if (typeof shadow !== 'boolean') {
-    shadowClassName = shadows[shadow]
+  // Define default classes to be used in the component
+  const defaultClasses = {
+    card: clsx(
+      'card shadow-xl',
+      glass ? 'glass' : 'bg-base-100',
+      layout === 'vertical' && !responsive && 'w-96'
+    ),
+    title: 'card-title',
+    actions: 'card-actions justify-end',
   }
+
+  // Create default title element, or add card-title className to provided title element
+  const titleEl = title && <div className={defaultClasses.title}>{title}</div>
+
+  // Add card-actions className to provided actions element
+  const actionsEl = actions && <div className={defaultClasses.actions}>{actions}</div>
+
+  const figureEl = figure && <figure>{figure}</figure>
 
   return (
     <div
-      className={clsx(
-        className,
-        'card',
-        shadowClassName,
-        compact && 'compact',
-        bordered && 'border'
+      className={twMerge(
+        defaultClasses.card,
+        clsx(
+          className,
+          compact && 'compact',
+          bordered && 'border',
+          layout !== 'vertical' && 'card-side',
+          figureOverlay && 'image-full'
+        )
       )}
       {...rest}
     >
-      {children && children}
+      {figure && figurePosition === 'start' && figureEl}
+      <div className={clsx('card-body', innerClassName)}>
+        {actionsEl && actionsPosition === 'start' && actionsEl}
+        {titleEl && titleEl}
+        {children && React.isValidElement(children) ? children : <p>{children}</p>}
+        {actionsEl && actionsPosition === 'end' && actionsEl}
+      </div>
+      {figure && figurePosition === 'end' && figureEl}
     </div>
   )
 }
-
-Card.Title = CardTitle
-Card.Body = CardBody
-Card.Image = CardImage
-Card.Actions = CardActions

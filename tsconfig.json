@@ -1,10 +1,9 @@
 {
   // see https://www.typescriptlang.org/tsconfig to better understand tsconfigs
-  "include": ["src", "types"],
+  "include": ["src/**/*.ts", "src/**/*.tsx", "src/**/*.stories.tsx", "types"],
   "exclude": [
     "node_modules",
     "dist",
-    "**/*.stories.tsx"
   ],
   "compilerOptions": {
     "module": "esnext",
@@ -41,11 +40,11 @@
     // `tsdx build` ignores this option, but it is commonly used when type-checking separately with `tsc`
     "noEmit": true,
     // alias
-    "baseUrl": "./",
+    "baseUrl": ".",
     "paths": {
       "@/*": [
         "src/*"
       ]
-    }
+    },
   }
 }

@@ -89,8 +89,8 @@ export const Badge = ({
         'badge',
         variant && variants[variant],
         size && sizes[size],
-        icon && iconGap,
-        outline && iconGap && iconGaps[iconGap]
+        outline && 'badge-outline',
+        icon && iconGap && iconGaps[iconGap]
       )}
       {...rest}
     >

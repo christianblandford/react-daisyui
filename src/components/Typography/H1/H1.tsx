@@ -1,18 +1,16 @@
 import React from 'react'
 
-import clsx from 'clsx'
+import { twMerge } from 'tailwind-merge'
 
 export type H1Props = {
-  preserveDefaults?: boolean
   children?: string
   className?: string
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const H1 = ({ className, preserveDefaults = true, children, ...rest }: H1Props) => {
-  const defaultClassName = 'text-4xl font-bold'
+export const H1 = ({ className, children, ...rest }: H1Props) => {
   return (
-    <h1 {...rest} className={clsx(className, preserveDefaults && defaultClassName)}>
+    <h1 {...rest} className={twMerge('text-4xl font-bold', className)}>
       {children}
     </h1>
   )

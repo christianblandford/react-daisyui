@@ -21,56 +21,52 @@ const Template: Story = ({ children, ...rest }) => (
 
 export const Default = Template.bind({})
 Default.args = {
-  children: (
-    <>
-      <Avatar>
-        <div className="w-12">
-          <img src="https://api.lorem.space/image/face?hash=53273" />
-        </div>
-      </Avatar>
-      <Avatar>
-        <div className="w-12">
-          <img src="https://api.lorem.space/image/face?hash=91831" />
-        </div>
-      </Avatar>
-      <Avatar>
-        <div className="w-12">
-          <img src="https://api.lorem.space/image/face?hash=27312" />
-        </div>
-      </Avatar>
-      <Avatar>
-        <div className="w-12">
-          <img src="https://api.lorem.space/image/face?hash=26448" />
-        </div>
-      </Avatar>
-    </>
-  ),
+  children: [
+    <Avatar>
+      <div className="w-12">
+        <img src="https://api.lorem.space/image/face?hash=53273" />
+      </div>
+    </Avatar>,
+    <Avatar>
+      <div className="w-12">
+        <img src="https://api.lorem.space/image/face?hash=91831" />
+      </div>
+    </Avatar>,
+    <Avatar>
+      <div className="w-12">
+        <img src="https://api.lorem.space/image/face?hash=27312" />
+      </div>
+    </Avatar>,
+    <Avatar>
+      <div className="w-12">
+        <img src="https://api.lorem.space/image/face?hash=26448" />
+      </div>
+    </Avatar>,
+  ],
 }
 
 export const WithCounter = Template.bind({})
 WithCounter.args = {
-  children: (
-    <>
-      <Avatar>
-        <div className="w-12">
-          <img src="https://api.lorem.space/image/face?hash=4818" />
-        </div>
-      </Avatar>
-      <Avatar>
-        <div className="w-12">
-          <img src="https://api.lorem.space/image/face?hash=40311" />
-        </div>
-      </Avatar>
-      <Avatar>
-        <div className="w-12">
-          <img src="https://api.lorem.space/image/face?hash=84348" />
-        </div>
-      </Avatar>
-      <Avatar placeholder>
-        <div className="w-12 bg-neutral-focus text-neutral-content">
-          <span>+99</span>
-        </div>
-      </Avatar>
-    </>
-  ),
+  children: [
+    <Avatar>
+      <div className="w-12">
+        <img src="https://api.lorem.space/image/face?hash=4818" />
+      </div>
+    </Avatar>,
+    <Avatar>
+      <div className="w-12">
+        <img src="https://api.lorem.space/image/face?hash=40311" />
+      </div>
+    </Avatar>,
+    <Avatar>
+      <div className="w-12">
+        <img src="https://api.lorem.space/image/face?hash=84348" />
+      </div>
+    </Avatar>,
+    <Avatar placeholder>
+      <div className="w-12 bg-neutral-focus text-neutral-content">
+        <span>+99</span>
+      </div>
+    </Avatar>,
+  ],
 }

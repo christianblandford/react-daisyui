@@ -17,4 +17,4 @@ module.exports = {
     rtl: false,
     darkTheme: 'dark',
   },
-};
+}

@@ -13,7 +13,7 @@
   "scripts": {
     "start": "tsdx watch",
     "build-tailwind": "cross-env NODE_ENV=production npx tailwindcss -o ./dist/tailwind.css --minify",
-    "build": "tsdx build && yarn build-tailwind",
+    "build": "tsdx build --tsconfig './tsconfig.build.json' && yarn build-tailwind",
     "test": "tsdx test --passWithNoTests",
     "lint": "tsdx lint",
     "prepare": "tsdx build",
@@ -21,7 +21,8 @@
     "analyze": "size-limit --why",
     "storybook": "start-storybook -p 6006",
     "build-storybook": "build-storybook",
-    "release": "dotenv release-it"
+    "release": "dotenv release-it",
+    "generate": "plop"
   },
   "publishConfig": {
     "registry": "https://registry.npmjs.org/"
@@ -83,5 +84,9 @@
     "tsdx": "^0.14.1",
     "tslib": "^2.3.1",
     "typescript": "^4.6.2"
+  },
+  "dependencies": {
+    "nanoid": "^3.3.1",
+    "tailwind-merge": "^1.2.0"
   }
 }
