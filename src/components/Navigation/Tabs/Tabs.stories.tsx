@@ -1,6 +1,5 @@
-import { H3, Prose } from '@/components/Typography'
+import { Prose } from '@/components/Typography'
 import { Meta, Story } from '@storybook/react'
-import React from 'react'
 import { useState } from 'react'
 import { Tab } from './Tab'
 

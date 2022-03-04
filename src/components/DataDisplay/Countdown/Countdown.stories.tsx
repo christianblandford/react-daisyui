@@ -1,4 +1,3 @@
-import React from 'react'
 import { Meta, Story } from '@storybook/react'
 import { useState, useEffect } from 'react'
 import { useInterval } from '@/hooks/useInterval'

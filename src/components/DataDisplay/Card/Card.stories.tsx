@@ -1,6 +1,5 @@
 import { Button } from '@/components/Actions'
 import { Meta, Story } from '@storybook/react'
-import React from 'react'
 import { Badge } from '../Badge'
 
 import { Card } from './Card'

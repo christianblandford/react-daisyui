@@ -1,6 +1,5 @@
 import { Card, Prose } from '@/components'
 import { Meta, Story } from '@storybook/react'
-import React from 'react'
 
 import { Swap } from './Swap'
 

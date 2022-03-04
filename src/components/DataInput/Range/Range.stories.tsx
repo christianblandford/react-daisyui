@@ -1,5 +1,5 @@
 import { Meta, Story } from '@storybook/react'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { RangeProps } from '.'
 
 import { Range } from './Range'

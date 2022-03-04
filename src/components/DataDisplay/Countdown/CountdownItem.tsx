@@ -23,7 +23,5 @@ export const CountdownItem = ({
     '--value': value,
   } as React.CSSProperties
 
-  const useFancyLabel = ''
-
   return <span {...rest} style={styleObj} className={className} />
 }

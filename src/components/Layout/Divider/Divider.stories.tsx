@@ -1,6 +1,5 @@
 import { Card } from '@/components'
 import { Meta, Story } from '@storybook/react'
-import React from 'react'
 
 import { Divider } from './Divider'
 
