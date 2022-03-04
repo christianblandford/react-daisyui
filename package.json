@@ -1,5 +1,5 @@
 {
-  "version": "0.0.3",
+  "version": "0.0.4",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -13,7 +13,7 @@
   "scripts": {
     "start": "tsdx watch",
     "build-tailwind": "cross-env NODE_ENV=production npx tailwindcss -o ./dist/tailwind.css --minify",
-    "build": "tsdx build --tsconfig './tsconfig.build.json' && yarn build-tailwind",
+    "build": "tsdx build --tsconfig ./tsconfig.build.json && yarn build-tailwind",
     "test": "tsdx test --passWithNoTests",
     "lint": "tsdx lint",
     "prepare": "tsdx build",
