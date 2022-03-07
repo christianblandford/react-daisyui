@@ -1,8 +1,8 @@
 # react-daisyui
 
-🚧 WORK IN PROGRESS 🚧
-
 A React.js wrapper for [daisyUI](https://github.com/saadeghi/daisyui)
+
+🚧 WORK IN PROGRESS 🚧
 
 [Storybook](https://christianblandford.github.io/react-daisyui)
 
