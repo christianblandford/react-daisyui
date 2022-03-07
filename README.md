@@ -8,9 +8,7 @@ A React.js wrapper for [daisyUI](https://github.com/saadeghi/daisyui)
 
 ### Help wanted
 
-🚨 I am looking for contributors to this project, as I do not have time to build all the components and handle the community on my own. 🚨
-
-I am somewhat new to deploying npm packages and very new to storybook and plop, I would expecially appreciate any contributions in this area.
+🚨 We are looking for contributors to this project! If you have packaging skills, react skills, or Github skills, we would love to work with you! 🚨
 
 # Installing
 
@@ -50,6 +48,68 @@ module.exports = {
      }
 
 Documentation and list of components is available in the [Storybook](https://christianblandford.github.io/react-daisyui).
+
+# Components
+
+- Actions
+
+  - [x] Button
+  - [ ] Dropdown
+  - [x] Modal
+  - [x] Swap
+
+- Data display
+
+  - [x] Alert
+  - [x] Avatar
+  - [x] Badge
+  - [x] Card
+  - [ ] Carousel
+  - [x] Collapse
+  - [x] Countdown
+  - [x] Kbd
+  - [x] Progress
+  - [x] Radial progress
+  - [ ] Stat
+  - [ ] Table
+  - [ ] Tooltip
+
+- Data input
+  - [x] Checkbox
+  - [x] Text input
+  - [x] Radio
+  - [x] Range
+  - [x] Rating
+  - [x] Select
+  - [x] Textarea
+  - [x] Toggle
+- Layout
+
+  - [ ] Artboard
+  - [ ] Button group
+  - [x] Divider
+  - [ ] Drawer
+  - [ ] Footer
+  - [ ] Hero
+  - [ ] Indicator
+  - [x] Input group
+  - [x] Mask
+  - [x] Stack
+
+- Navigation
+
+  - [ ] Breadcrumbs
+  - [x] Link
+  - [ ] Menu
+  - [ ] Navbar
+  - [ ] Pagination
+  - [ ] Steps
+  - [x] Tab
+
+- Mockup
+  - [x] Code
+  - [x] Phone
+  - [x] Window
 
 # Contributing
 
