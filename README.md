@@ -70,9 +70,9 @@ Documentation and list of components is available in the [Storybook](https://chr
   - [x] Kbd
   - [x] Progress
   - [x] Radial progress
-  - [ ] Stat
+  - [x] Stat
   - [ ] Table
-  - [ ] Tooltip
+  - [x] Tooltip
 
 - Data input
   - [x] Checkbox
@@ -85,11 +85,11 @@ Documentation and list of components is available in the [Storybook](https://chr
   - [x] Toggle
 - Layout
 
-  - [ ] Artboard
-  - [ ] Button group
+  - [x] Artboard
+  - [x] Button group
   - [x] Divider
   - [ ] Drawer
-  - [ ] Footer
+  - [x] Footer
   - [ ] Hero
   - [ ] Indicator
   - [x] Input group
@@ -98,12 +98,12 @@ Documentation and list of components is available in the [Storybook](https://chr
 
 - Navigation
 
-  - [ ] Breadcrumbs
+  - [x] Breadcrumbs
   - [x] Link
   - [ ] Menu
   - [ ] Navbar
   - [ ] Pagination
-  - [ ] Steps
+  - [x] Steps
   - [x] Tab
 
 - Mockup

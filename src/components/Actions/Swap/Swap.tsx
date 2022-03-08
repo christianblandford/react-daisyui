@@ -1,7 +1,9 @@
+import { Tooltip } from '@/components/DataDisplay'
+import { ElementWithTooltipProps } from '@/types'
 import clsx from 'clsx'
 import React, { useState } from 'react'
 
-export type SwapProps = {
+export type SwapProps = ElementWithTooltipProps & {
   first: React.ReactNode
   second: React.ReactNode
   className?: string
@@ -32,6 +34,10 @@ export const Swap = ({
   active = false,
   onSwap,
   disabled,
+  tooltipForceOpen,
+  tooltipPosition,
+  tooltipText,
+  tooltipVariant,
   ...rest
 }: SwapProps) => {
   const [isSwapped, setIsSwapped] = useState(active)
@@ -62,7 +68,7 @@ export const Swap = ({
     }
   }
 
-  return (
+  const swap = (
     <div
       {...rest}
       className={clsx(
@@ -88,4 +94,19 @@ export const Swap = ({
       })}
     </div>
   )
+
+  if (!tooltipText) {
+    return swap
+  } else {
+    return (
+      <Tooltip
+        position={tooltipPosition}
+        variant={tooltipVariant}
+        forceOpen={tooltipForceOpen}
+        text={tooltipText}
+      >
+        {swap}
+      </Tooltip>
+    )
+  }
 }

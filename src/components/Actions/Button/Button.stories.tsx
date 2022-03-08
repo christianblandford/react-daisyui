@@ -115,3 +115,42 @@ NoClickAnimation.args = {
   children: 'No Click Animation',
   noAnimation: true,
 }
+
+export const ButtonWithTooltipVariants = () => {
+  return (
+    <div className="h-96 flex flex-col gap-4 items-center justify-center">
+      <div className="flex flex-row gap-2">
+        <Button tooltipText="Click the button">Default</Button>
+        <Button variant="primary" tooltipVariant="primary" tooltipText="Click the button">
+          Primary
+        </Button>
+        <Button variant="secondary" tooltipVariant="secondary" tooltipText="Click the button">
+          Secondary
+        </Button>
+        <Button variant="accent" tooltipVariant="accent" tooltipText="Click the button">
+          Accent
+        </Button>
+        <Button variant="ghost" tooltipVariant="ghost" tooltipText="Click the button">
+          Ghost
+        </Button>
+        <Button variant="link" tooltipText="Click the button">
+          Link
+        </Button>
+      </div>
+      <div className="flex flex-row gap-2">
+        <Button variant="info" tooltipVariant="info" tooltipText="Click the button">
+          info
+        </Button>
+        <Button variant="success" tooltipVariant="success" tooltipText="Click the button">
+          success
+        </Button>
+        <Button variant="warning" tooltipVariant="warning" tooltipText="Click the button">
+          warning
+        </Button>
+        <Button variant="error" tooltipVariant="error" tooltipText="Click the button">
+          error
+        </Button>
+      </div>
+    </div>
+  )
+}

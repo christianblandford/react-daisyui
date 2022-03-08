@@ -1,3 +1,5 @@
+import { Tooltip } from '@/components/DataDisplay'
+import { ElementWithTooltipProps } from '@/types'
 import clsx from 'clsx'
 import React from 'react'
 
@@ -28,7 +30,7 @@ const variants = {
 
 export type ButtonVariant = keyof typeof variants
 
-export type ButtonProps = {
+export type ButtonProps = ElementWithTooltipProps & {
   block?: boolean
   className?: string
   variant?: ButtonVariant
@@ -62,10 +64,14 @@ export const Button = ({
   type = 'button',
   icon,
   iconPosition = 'start',
+  tooltipForceOpen,
+  tooltipPosition,
+  tooltipText,
+  tooltipVariant,
   onClick,
   children,
 }: ButtonProps) => {
-  return (
+  const button = (
     <button
       className={clsx(
         'btn text-white focus:outline-none',
@@ -90,4 +96,19 @@ export const Button = ({
       {icon && iconPosition === 'end' && icon}
     </button>
   )
+
+  if (!tooltipText) {
+    return button
+  } else {
+    return (
+      <Tooltip
+        position={tooltipPosition}
+        variant={tooltipVariant}
+        forceOpen={tooltipForceOpen}
+        text={tooltipText}
+      >
+        {button}
+      </Tooltip>
+    )
+  }
 }
