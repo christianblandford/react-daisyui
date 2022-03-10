@@ -24,23 +24,18 @@ export type CheckboxProps = {
   className?: string
 }
 
-export const Checkbox = ({
-  size,
-  variant,
-  className,
-  checked,
-  onChange,
-  disabled = false,
-  ...rest
-}: CheckboxProps) => {
-  return (
-    <input
-      {...rest}
-      type="checkbox"
-      checked={checked}
-      onChange={(e) => onChange(e.target.checked)}
-      className={clsx(className, 'checkbox', variant && variants[variant], size && sizes[size])}
-      disabled={disabled}
-    ></input>
-  )
-}
+export const Checkbox = React.forwardRef<HTMLInputElement, CheckboxProps>(
+  ({ size, variant, className, checked, onChange, disabled = false, ...rest }, ref) => {
+    return (
+      <input
+        {...rest}
+        type="checkbox"
+        checked={checked}
+        onChange={(e) => onChange(e.target.checked)}
+        className={clsx(className, 'checkbox', variant && variants[variant], size && sizes[size])}
+        disabled={disabled}
+        ref={ref}
+      ></input>
+    )
+  }
+)

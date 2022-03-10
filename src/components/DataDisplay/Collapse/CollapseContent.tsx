@@ -6,6 +6,12 @@ export type CollapseContentProps = {
   className?: string
 }
 
-export const CollapseContent = ({ children, className }: CollapseContentProps) => {
-  return <div className={clsx(className, 'collapse-content')}>{children}</div>
-}
+export const CollapseContent = React.forwardRef<HTMLDivElement, CollapseContentProps>(
+  ({ children, className }, ref) => {
+    return (
+      <div className={clsx(className, 'collapse-content')} ref={ref}>
+        {children}
+      </div>
+    )
+  }
+)

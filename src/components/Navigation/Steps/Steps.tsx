@@ -7,10 +7,12 @@ export type StepsProps = {
   className?: string
 }
 
-export const Steps = ({ vertical, className, children, ...rest }: StepsProps) => {
-  return (
-    <div {...rest} className={clsx(className, 'steps', vertical && 'steps-vertical')}>
-      {children}
-    </div>
-  )
-}
+export const Steps = React.forwardRef<HTMLDivElement, StepsProps>(
+  ({ vertical, className, children, ...rest }, ref) => {
+    return (
+      <div {...rest} className={clsx(className, 'steps', vertical && 'steps-vertical')} ref={ref}>
+        {children}
+      </div>
+    )
+  }
+)

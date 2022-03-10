@@ -100,7 +100,7 @@ Documentation and list of components is available in the [Storybook](https://chr
 
   - [x] Breadcrumbs
   - [x] Link
-  - [ ] Menu
+  - [x] Menu
   - [ ] Navbar
   - [ ] Pagination
   - [x] Steps

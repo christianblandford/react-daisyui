@@ -24,25 +24,19 @@ export type RadioProps = {
   disabled?: boolean
 }
 
-export const Radio = ({
-  name,
-  checked,
-  onChange,
-  disabled = false,
-  size,
-  variant,
-  className,
-  ...rest
-}: RadioProps) => {
-  return (
-    <input
-      {...rest}
-      name={name}
-      disabled={disabled}
-      type="radio"
-      checked={checked}
-      onChange={(e) => onChange(e)}
-      className={clsx(className, 'radio', variant && variants[variant], size && sizes[size])}
-    />
-  )
-}
+export const Radio = React.forwardRef<HTMLInputElement, RadioProps>(
+  ({ name, checked, onChange, disabled = false, size, variant, className, ...rest }, ref) => {
+    return (
+      <input
+        {...rest}
+        name={name}
+        disabled={disabled}
+        type="radio"
+        checked={checked}
+        onChange={(e) => onChange(e)}
+        className={clsx(className, 'radio', variant && variants[variant], size && sizes[size])}
+        ref={ref}
+      />
+    )
+  }
+)

@@ -7,15 +7,14 @@ export type CollapseTitleProps = {
   className?: string
 }
 
-export const CollapseTitle = ({
-  children,
-  className = 'text-xl font-medium',
-}: CollapseTitleProps) => {
-  const { onClick } = useContext(CollapseContext)!
+export const CollapseTitle = React.forwardRef<HTMLDivElement, CollapseTitleProps>(
+  ({ children, className = 'text-xl font-medium' }, ref) => {
+    const { onClick } = useContext(CollapseContext)!
 
-  return (
-    <div className={clsx(className, 'collapse-title')} onClick={onClick}>
-      {children}
-    </div>
-  )
-}
+    return (
+      <div className={clsx(className, 'collapse-title')} onClick={onClick} ref={ref}>
+        {children}
+      </div>
+    )
+  }
+)

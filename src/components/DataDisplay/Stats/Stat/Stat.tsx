@@ -30,93 +30,95 @@ export type StatProps = {
   className?: string
 }
 
-export const Stat = ({
-  variant,
-  value,
-  title,
-  description,
-  figure,
-  actions,
-  centered,
-  className,
-  children,
-  ...rest
-}: StatProps) => {
-  console.log({
-    variant,
-    value,
-    title,
-    description,
-    figure,
-    actions,
-    centered,
-    className,
-    children,
-  })
+const Stat = React.forwardRef<HTMLDivElement, StatProps>(
+  (
+    { variant, value, title, description, figure, actions, centered, className, children, ...rest },
+    ref
+  ) => {
+    console.log({
+      variant,
+      value,
+      title,
+      description,
+      figure,
+      actions,
+      centered,
+      className,
+      children,
+    })
 
-  const figureEl =
-    figure &&
-    (React.isValidElement(figure) ? (
-      React.cloneElement(figure, {
-        ...(figure as React.ReactElement).props,
-        className: twMerge((figure as React.ReactElement).props.className, 'stat-figure'),
-      })
-    ) : (
-      <div className="stat-figure">{figure}</div>
-    ))
+    const figureEl =
+      figure &&
+      (React.isValidElement(figure) ? (
+        React.cloneElement(figure, {
+          ...(figure as React.ReactElement).props,
+          className: twMerge((figure as React.ReactElement).props.className, 'stat-figure'),
+        })
+      ) : (
+        <div className="stat-figure">{figure}</div>
+      ))
 
-  const titleEl =
-    title &&
-    (React.isValidElement(title) ? (
-      React.cloneElement(title, {
-        ...(title as React.ReactElement).props,
-        className: twMerge((title as React.ReactElement).props.className, 'stat-title'),
-      })
-    ) : (
-      <div className="stat-title">{title}</div>
-    ))
+    const titleEl =
+      title &&
+      (React.isValidElement(title) ? (
+        React.cloneElement(title, {
+          ...(title as React.ReactElement).props,
+          className: twMerge((title as React.ReactElement).props.className, 'stat-title'),
+        })
+      ) : (
+        <div className="stat-title">{title}</div>
+      ))
 
-  const valueEl =
-    value &&
-    (React.isValidElement(value) ? (
-      React.cloneElement(value, {
-        ...(value as React.ReactElement).props,
-        className: twMerge(
-          (value as React.ReactElement).props.className,
-          'stat-value',
-          variant && variants[variant]
-        ),
-      })
-    ) : (
-      <div className={clsx('stat-value', variant && variants[variant])}>{value}</div>
-    ))
+    const valueEl =
+      value &&
+      (React.isValidElement(value) ? (
+        React.cloneElement(value, {
+          ...(value as React.ReactElement).props,
+          className: twMerge(
+            (value as React.ReactElement).props.className,
+            'stat-value',
+            variant && variants[variant]
+          ),
+        })
+      ) : (
+        <div className={clsx('stat-value', variant && variants[variant])}>{value}</div>
+      ))
 
-  const descEl =
-    description &&
-    (React.isValidElement(description) ? (
-      React.cloneElement(description, {
-        ...(description as React.ReactElement).props,
-        className: twMerge((description as React.ReactElement).props.className, 'stat-desc'),
-      })
-    ) : (
-      <div className="stat-desc">{description}</div>
-    ))
+    const descEl =
+      description &&
+      (React.isValidElement(description) ? (
+        React.cloneElement(description, {
+          ...(description as React.ReactElement).props,
+          className: twMerge((description as React.ReactElement).props.className, 'stat-desc'),
+        })
+      ) : (
+        <div className="stat-desc">{description}</div>
+      ))
 
-  return (
-    <div {...rest} className={clsx(className, 'stat', centered && ceneteredStatClassName)}>
-      {figureEl}
-      {titleEl}
-      {valueEl}
-      {descEl}
+    return (
+      <div
+        {...rest}
+        className={clsx(className, 'stat', centered && ceneteredStatClassName)}
+        ref={ref}
+      >
+        {figureEl}
+        {titleEl}
+        {valueEl}
+        {descEl}
 
-      {children}
+        {children}
 
-      {actions && <div className="stat-actions">{actions}</div>}
-    </div>
-  )
-}
-Stat.Title = StatTitle
-Stat.Value = StatValue
-Stat.Description = StatDescription
-Stat.Figure = StatFigure
-Stat.Actions = StatActions
+        {actions && <div className="stat-actions">{actions}</div>}
+      </div>
+    )
+  }
+)
+
+const StatNamespace = Object.assign(Stat, {
+  Title: StatTitle,
+  Value: StatValue,
+  Description: StatDescription,
+  Figure: StatFigure,
+  Actions: StatActions,
+})
+export { StatNamespace as Stat }

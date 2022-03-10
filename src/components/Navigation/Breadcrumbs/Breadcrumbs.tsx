@@ -7,10 +7,12 @@ export type BreadcrumbsProps = {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const Breadcrumbs = ({ className, children, ...rest }: BreadcrumbsProps) => {
-  return (
-    <div {...rest} className={twMerge('breadcrumbs', 'text-sm', className)}>
-      <ul>{children}</ul>
-    </div>
-  )
-}
+export const Breadcrumbs = React.forwardRef<HTMLDivElement, BreadcrumbsProps>(
+  ({ className, children, ...rest }, ref) => {
+    return (
+      <div {...rest} className={twMerge('breadcrumbs', 'text-sm', className)} ref={ref}>
+        <ul>{children}</ul>
+      </div>
+    )
+  }
+)

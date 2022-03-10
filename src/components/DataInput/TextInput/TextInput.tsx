@@ -22,29 +22,26 @@ export type TextInputProps = {
   disabled?: boolean
 }
 
-export const TextInput = ({
-  variant,
-  bordered,
-  placeholder,
-  className,
-  value,
-  onChange,
-  disabled = false,
-  ...rest
-}: TextInputProps) => {
-  return (
-    <input
-      {...rest}
-      className={clsx(
-        className,
-        'input',
-        bordered && 'input-bordered',
-        variant && variants[variant]
-      )}
-      placeholder={placeholder}
-      value={value}
-      onChange={onChange}
-      disabled={disabled}
-    />
-  )
-}
+export const TextInput = React.forwardRef<HTMLInputElement, TextInputProps>(
+  (
+    { variant, bordered, placeholder, className, value, onChange, disabled = false, ...rest },
+    ref
+  ) => {
+    return (
+      <input
+        {...rest}
+        className={clsx(
+          className,
+          'input',
+          bordered && 'input-bordered',
+          variant && variants[variant]
+        )}
+        placeholder={placeholder}
+        value={value}
+        onChange={onChange}
+        disabled={disabled}
+        ref={ref}
+      />
+    )
+  }
+)

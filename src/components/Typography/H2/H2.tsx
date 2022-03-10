@@ -8,10 +8,12 @@ export type H2Props = {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const H2 = ({ className, children, ...rest }: H2Props) => {
-  return (
-    <h2 {...rest} className={twMerge('text-3xl font-bold', className)}>
-      {children}
-    </h2>
-  )
-}
+export const H2 = React.forwardRef<HTMLHeadingElement, H2Props>(
+  ({ className, children, ...rest }, ref) => {
+    return (
+      <h2 {...rest} className={twMerge('text-3xl font-bold', className)} ref={ref}>
+        {children}
+      </h2>
+    )
+  }
+)

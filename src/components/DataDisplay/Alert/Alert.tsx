@@ -23,17 +23,20 @@ export type AlertProps = {
   children?: React.ReactNode
 }
 
-export const Alert = ({ variant, children, shadowDepth = 'lg', className }: AlertProps) => {
-  return (
-    <div
-      className={clsx(
-        className,
-        'alert shadow-lg',
-        variant && alertVariants[variant],
-        alertShadowOptions[shadowDepth]
-      )}
-    >
-      {children && children}
-    </div>
-  )
-}
+export const Alert = React.forwardRef<HTMLDivElement, AlertProps>(
+  ({ variant, children, shadowDepth = 'lg', className }, ref) => {
+    return (
+      <div
+        className={clsx(
+          className,
+          'alert shadow-lg',
+          variant && alertVariants[variant],
+          alertShadowOptions[shadowDepth]
+        )}
+        ref={ref}
+      >
+        {children && children}
+      </div>
+    )
+  }
+)

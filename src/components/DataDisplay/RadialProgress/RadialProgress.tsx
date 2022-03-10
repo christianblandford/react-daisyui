@@ -12,24 +12,29 @@ export type RadialProgressProps = {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const RadialProgress = ({
-  showNumber = true,
-  hidePercentSign = false,
-  thickness,
-  size,
-  value,
-  className,
-  children,
-  ...rest
-}: RadialProgressProps) => {
-  const style = {
-    ...{ ['--value' as any]: value },
-    ...(thickness && { ['--thickness' as any]: thickness }),
-    ...(size && { ['--size' as any]: size }),
-  } as React.CSSProperties
-  return (
-    <div {...rest} className={clsx(className, 'radial-progress')} style={style}>
-      {showNumber && `${value}`} {showNumber && !hidePercentSign && '%'}
-    </div>
-  )
-}
+export const RadialProgress = React.forwardRef<HTMLDivElement, RadialProgressProps>(
+  (
+    {
+      showNumber = true,
+      hidePercentSign = false,
+      thickness,
+      size,
+      value,
+      className,
+      children,
+      ...rest
+    },
+    ref
+  ) => {
+    const style = {
+      ...{ ['--value' as any]: value },
+      ...(thickness && { ['--thickness' as any]: thickness }),
+      ...(size && { ['--size' as any]: size }),
+    } as React.CSSProperties
+    return (
+      <div {...rest} className={clsx(className, 'radial-progress')} style={style} ref={ref}>
+        {showNumber && `${value}`} {showNumber && !hidePercentSign && '%'}
+      </div>
+    )
+  }
+)

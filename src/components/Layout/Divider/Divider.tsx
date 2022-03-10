@@ -10,26 +10,29 @@ export type DividerProps = {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const Divider = ({ vertical, horizontal, className, text, ...rest }: DividerProps) => {
-  if (horizontal && vertical) {
-    throw new Error('Divider cannot be both horizontal and vertical.')
-  }
+export const Divider = React.forwardRef<HTMLDivElement, DividerProps>(
+  ({ vertical, horizontal, className, text, ...rest }, ref) => {
+    if (horizontal && vertical) {
+      throw new Error('Divider cannot be both horizontal and vertical.')
+    }
 
-  if (!horizontal && !vertical) {
-    horizontal = true
-  }
+    if (!horizontal && !vertical) {
+      horizontal = true
+    }
 
-  return (
-    <div
-      {...rest}
-      className={clsx(
-        className,
-        'divider',
-        horizontal && 'divider-horizontal',
-        vertical && 'divider-vertical'
-      )}
-    >
-      {text && text}
-    </div>
-  )
-}
+    return (
+      <div
+        {...rest}
+        className={clsx(
+          className,
+          'divider',
+          horizontal && 'divider-horizontal',
+          vertical && 'divider-vertical'
+        )}
+        ref={ref}
+      >
+        {text && text}
+      </div>
+    )
+  }
+)

@@ -8,10 +8,16 @@ export type StatFigureProps = {
   children?: React.ReactNode
 }
 
-export const StatFigure = ({ className, variant, children, ...rest }: StatFigureProps) => {
-  return (
-    <div {...rest} className={twMerge(className, 'stat-figure', variant && variants[variant])}>
-      {children}
-    </div>
-  )
-}
+export const StatFigure = React.forwardRef<HTMLDivElement, StatFigureProps>(
+  ({ className, variant, children, ...rest }, ref) => {
+    return (
+      <div
+        {...rest}
+        className={twMerge(className, 'stat-figure', variant && variants[variant])}
+        ref={ref}
+      >
+        {children}
+      </div>
+    )
+  }
+)

@@ -8,10 +8,12 @@ export type StackProps = {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const Stack = ({ className, children, ...rest }: StackProps) => {
-  return (
-    <div {...rest} className={clsx(className, 'stack')}>
-      {children}
-    </div>
-  )
-}
+export const Stack = React.forwardRef<HTMLDivElement, StackProps>(
+  ({ className, children, ...rest }, ref) => {
+    return (
+      <div {...rest} className={clsx(className, 'stack')} ref={ref}>
+        {children}
+      </div>
+    )
+  }
+)

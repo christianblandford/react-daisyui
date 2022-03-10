@@ -19,48 +19,56 @@ export type ModalProps = {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const Modal = ({
-  isOpen = false,
-  title,
-  subtitle,
-  allowClose = true,
-  showCloseButton = true,
-  backdropClickCloses = true,
-  onClose,
-  style,
-  className,
-  children,
-  portalElement,
-  ...rest
-}: ModalProps) => {
-  const handleClose = () => {
-    onClose && allowClose && onClose()
-  }
+const Modal = React.forwardRef<HTMLDivElement, ModalProps>(
+  (
+    {
+      isOpen = false,
+      title,
+      subtitle,
+      allowClose = true,
+      showCloseButton = true,
+      backdropClickCloses = true,
+      onClose,
+      style,
+      className,
+      children,
+      portalElement,
+      ...rest
+    },
+    ref
+  ) => {
+    const handleClose = () => {
+      onClose && allowClose && onClose()
+    }
 
-  const handleBackdropClick: MouseEventHandler = (e) => {
-    if (e.target === e.currentTarget) {
-      e.stopPropagation()
-      e.preventDefault()
-      if (backdropClickCloses) {
-        handleClose()
+    const handleBackdropClick: MouseEventHandler = (e) => {
+      if (e.target === e.currentTarget) {
+        e.stopPropagation()
+        e.preventDefault()
+        if (backdropClickCloses) {
+          handleClose()
+        }
       }
     }
-  }
 
-  if (isOpen) {
-    return createPortal(
-      <div
-        {...rest}
-        className={clsx(className, 'modal', 'modal-open')}
-        onClick={handleBackdropClick}
-      >
-        <div className="modal-box">{children}</div>
-      </div>,
-      portalElement ?? document.body
-    )
-  } else {
-    return null
+    if (isOpen) {
+      return createPortal(
+        <div
+          {...rest}
+          className={clsx(className, 'modal', 'modal-open')}
+          onClick={handleBackdropClick}
+          ref={ref}
+        >
+          <div className="modal-box">{children}</div>
+        </div>,
+        portalElement ?? document.body
+      )
+    } else {
+      return null
+    }
   }
-}
+)
 
-Modal.Action = ModalAction
+const ModalNamespace = Object.assign(Modal, { Action: ModalAction })
+
+export { ModalNamespace as Modal }

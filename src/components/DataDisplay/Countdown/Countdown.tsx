@@ -9,21 +9,17 @@ export type CountdownProps = {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const Countdown = ({
-  value,
-  className,
-  innerClassName,
-  innerStyle = {},
-  ...rest
-}: CountdownProps) => {
-  const styleObj = {
-    ...innerStyle,
-    '--value': value,
-  } as React.CSSProperties
+export const Countdown = React.forwardRef<HTMLSpanElement, CountdownProps>(
+  ({ value, className, innerClassName, innerStyle = {}, ...rest }, ref) => {
+    const styleObj = {
+      ...innerStyle,
+      '--value': value,
+    } as React.CSSProperties
 
-  return (
-    <span {...rest} className={clsx('countdown', className)}>
-      <span style={styleObj} className={innerClassName} />
-    </span>
-  )
-}
+    return (
+      <span {...rest} className={clsx('countdown', className)} ref={ref}>
+        <span style={styleObj} className={innerClassName} />
+      </span>
+    )
+  }
+)

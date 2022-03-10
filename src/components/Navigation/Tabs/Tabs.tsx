@@ -24,39 +24,44 @@ export type TabsProps = {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const Tabs = ({
-  onChange,
-  activeTabIndex,
-  activeTabClassName,
-  activeTabStyle,
-  className,
-  children,
-  bordered,
-  lifted,
-  boxed,
-  size,
-  ...rest
-}: TabsProps) => {
-  return (
-    <div {...rest} className={clsx(className, 'tabs', boxed && 'tabs-boxed')}>
-      {React.Children.map(
-        children,
-        (child, index) =>
-          React.isValidElement(child) &&
-          React.cloneElement(child as React.ReactElement, {
-            ...child.props,
-            active: activeTabIndex === index,
-            onClick: () => onChange(index),
-            activeTabClassName,
-            activeTabStyle,
-            className: clsx(
-              child.props?.className,
-              bordered && 'tab-bordered',
-              lifted && 'tab-lifted',
-              size && sizes[size]
-            ),
-          })
-      )}
-    </div>
-  )
-}
+export const Tabs = React.forwardRef<HTMLDivElement, TabsProps>(
+  (
+    {
+      onChange,
+      activeTabIndex,
+      activeTabClassName,
+      activeTabStyle,
+      className,
+      children,
+      bordered,
+      lifted,
+      boxed,
+      size,
+      ...rest
+    },
+    ref
+  ) => {
+    return (
+      <div {...rest} className={clsx(className, 'tabs', boxed && 'tabs-boxed')} ref={ref}>
+        {React.Children.map(
+          children,
+          (child, index) =>
+            React.isValidElement(child) &&
+            React.cloneElement(child as React.ReactElement, {
+              ...child.props,
+              active: activeTabIndex === index,
+              onClick: () => onChange(index),
+              activeTabClassName,
+              activeTabStyle,
+              className: clsx(
+                child.props?.className,
+                bordered && 'tab-bordered',
+                lifted && 'tab-lifted',
+                size && sizes[size]
+              ),
+            })
+        )}
+      </div>
+    )
+  }
+)

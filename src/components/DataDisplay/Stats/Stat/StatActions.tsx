@@ -6,10 +6,12 @@ export type StatActionsProps = {
   children?: React.ReactNode
 }
 
-export const StatActions = ({ className, children, ...rest }: StatActionsProps) => {
-  return (
-    <div {...rest} className={twMerge(className, 'stat-actions')}>
-      {children}
-    </div>
-  )
-}
+export const StatActions = React.forwardRef<HTMLDivElement, StatActionsProps>(
+  ({ className, children, ...rest }, ref) => {
+    return (
+      <div {...rest} className={twMerge(className, 'stat-actions')} ref={ref}>
+        {children}
+      </div>
+    )
+  }
+)

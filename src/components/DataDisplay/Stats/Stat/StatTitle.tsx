@@ -8,10 +8,16 @@ export type StatTitleProps = {
   children?: React.ReactNode
 }
 
-export const StatTitle = ({ className, variant, children, ...rest }: StatTitleProps) => {
-  return (
-    <div {...rest} className={twMerge(className, 'stat-title', variant && variants[variant])}>
-      {children}
-    </div>
-  )
-}
+export const StatTitle = React.forwardRef<HTMLDivElement, StatTitleProps>(
+  ({ className, variant, children, ...rest }, ref) => {
+    return (
+      <div
+        {...rest}
+        className={twMerge(className, 'stat-title', variant && variants[variant])}
+        ref={ref}
+      >
+        {children}
+      </div>
+    )
+  }
+)

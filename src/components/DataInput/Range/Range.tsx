@@ -24,31 +24,25 @@ export type RangeProps = {
   onChange: (value: number) => void
 }
 
-export const Range = ({
-  variant,
-  size,
-  className,
-  min = 0,
-  max = 100,
-  value,
-  onChange,
-  ...rest
-}: RangeProps) => {
-  return (
-    <input
-      {...rest}
-      type="range"
-      className={clsx(className, 'range', variant && variants[variant], size && sizes[size])}
-      min={min}
-      max={max}
-      value={value}
-      onChange={(e) => {
-        if (e.target.value && typeof e.target.value === 'string') {
-          onChange(parseInt(e.target.value))
-        } else {
-          throw new Error('Range value cannot be undefined and must be a string')
-        }
-      }}
-    />
-  )
-}
+export const Range = React.forwardRef<HTMLInputElement, RangeProps>(
+  ({ variant, size, className, min = 0, max = 100, value, onChange, ...rest }, ref) => {
+    return (
+      <input
+        {...rest}
+        type="range"
+        className={clsx(className, 'range', variant && variants[variant], size && sizes[size])}
+        min={min}
+        max={max}
+        value={value}
+        onChange={(e) => {
+          if (e.target.value && typeof e.target.value === 'string') {
+            onChange(parseInt(e.target.value))
+          } else {
+            throw new Error('Range value cannot be undefined and must be a string')
+          }
+        }}
+        ref={ref}
+      />
+    )
+  }
+)

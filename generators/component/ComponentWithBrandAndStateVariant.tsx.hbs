@@ -17,10 +17,10 @@ export type {{properCase name}}Props = {
   className?: string
 }
 
-export const {{properCase name}} = ({variant, className, children, ...rest}: {{properCase name}}Props) => { 
+export const {{properCase name}} = React.forwardRef<HTMLDivElement, {{properCase name}}Props>(({variant, className, children, ...rest}, ref) => { 
   return (
-    <div {...rest} className={clsx(className, '{{dashCase name}}', variant && variants[variant], '')}>
+    <div {...rest} className={clsx(className, '{{dashCase name}}', variant && variants[variant], '')} ref={ref}>
       {children}
     </div>
   )
-}
+})

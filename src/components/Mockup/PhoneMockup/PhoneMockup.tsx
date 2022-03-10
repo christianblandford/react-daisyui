@@ -17,13 +17,19 @@ export type PhoneMockupProps = {
   className?: string
 }
 
-export const PhoneMockup = ({ variant, className, children, ...rest }: PhoneMockupProps) => {
-  return (
-    <div {...rest} className={clsx(className, 'mockup-phone', variant && variants[variant])}>
-      <div className="camera" />
-      <div className="display">
-        <div className="artboard artboard-demo phone-1">{children}</div>
+export const PhoneMockup = React.forwardRef<HTMLDivElement, PhoneMockupProps>(
+  ({ variant, className, children, ...rest }, ref) => {
+    return (
+      <div
+        {...rest}
+        className={clsx(className, 'mockup-phone', variant && variants[variant])}
+        ref={ref}
+      >
+        <div className="camera" />
+        <div className="display">
+          <div className="artboard artboard-demo phone-1">{children}</div>
+        </div>
       </div>
-    </div>
-  )
-}
+    )
+  }
+)

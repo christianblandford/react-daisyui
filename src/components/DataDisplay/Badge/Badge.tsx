@@ -71,32 +71,38 @@ export type BadgeProps = {
   iconPosition?: 'start' | 'end'
 }
 
-export const Badge = ({
-  className,
-  size,
-  variant,
-  outline = false,
-  children,
-  icon,
-  iconGap,
-  iconPosition = 'start',
-  ...rest
-}: BadgeProps) => {
-  return (
-    <div
-      className={clsx(
-        className,
-        'badge',
-        variant && variants[variant],
-        size && sizes[size],
-        outline && 'badge-outline',
-        icon && iconGap && iconGaps[iconGap]
-      )}
-      {...rest}
-    >
-      {icon && iconPosition === 'start' && icon}
-      {children && children}
-      {icon && iconPosition === 'end' && icon}
-    </div>
-  )
-}
+export const Badge = React.forwardRef<HTMLDivElement, BadgeProps>(
+  (
+    {
+      className,
+      size,
+      variant,
+      outline = false,
+      children,
+      icon,
+      iconGap,
+      iconPosition = 'start',
+      ...rest
+    },
+    ref
+  ) => {
+    return (
+      <div
+        {...rest}
+        className={clsx(
+          className,
+          'badge',
+          variant && variants[variant],
+          size && sizes[size],
+          outline && 'badge-outline',
+          icon && iconGap && iconGaps[iconGap]
+        )}
+        ref={ref}
+      >
+        {icon && iconPosition === 'start' && icon}
+        {children && children}
+        {icon && iconPosition === 'end' && icon}
+      </div>
+    )
+  }
+)

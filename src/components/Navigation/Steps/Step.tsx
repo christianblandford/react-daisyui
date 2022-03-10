@@ -20,26 +20,21 @@ export type StepProps = {
   children: React.ReactNode
 }
 
-export const Step = ({
-  children,
-  content,
-  variant,
-  disabled,
-  onClick,
-  className,
-  ...rest
-}: StepProps) => {
-  const handleClick = () => {
-    onClick && !disabled && onClick()
+export const Step = React.forwardRef<HTMLLIElement, StepProps>(
+  ({ children, content, variant, disabled, onClick, className, ...rest }, ref) => {
+    const handleClick = () => {
+      onClick && !disabled && onClick()
+    }
+    return (
+      <li
+        {...rest}
+        onClick={handleClick}
+        className={twMerge('step', variant && variants[variant], className)}
+        data-content={content}
+        ref={ref}
+      >
+        {children}
+      </li>
+    )
   }
-  return (
-    <li
-      {...rest}
-      onClick={handleClick}
-      className={twMerge('step', variant && variants[variant], className)}
-      data-content={content}
-    >
-      {children}
-    </li>
-  )
-}
+)

@@ -8,18 +8,21 @@ export type FooterProps = {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const Footer = ({ centered, className, children, ...rest }: FooterProps) => {
-  return (
-    <div
-      {...rest}
-      className={twMerge(
-        centered && 'footer-center',
-        'footer',
-        'p-10 bg-neutral text-neutral-content',
-        className
-      )}
-    >
-      {children}
-    </div>
-  )
-}
+export const Footer = React.forwardRef<HTMLDivElement, FooterProps>(
+  ({ centered, className, children, ...rest }, ref) => {
+    return (
+      <div
+        {...rest}
+        className={twMerge(
+          centered && 'footer-center',
+          'footer',
+          'p-10 bg-neutral text-neutral-content',
+          className
+        )}
+        ref={ref}
+      >
+        {children}
+      </div>
+    )
+  }
+)

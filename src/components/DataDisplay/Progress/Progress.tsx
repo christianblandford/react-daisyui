@@ -20,20 +20,16 @@ export type ProgressProps = {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const Progress = ({
-  className,
-  children,
-  value,
-  max = 100,
-  variant,
-  ...rest
-}: ProgressProps) => {
-  return (
-    <progress
-      {...rest}
-      className={clsx(className, 'progress', variant && variants[variant])}
-      value={value}
-      max={max}
-    ></progress>
-  )
-}
+export const Progress = React.forwardRef<HTMLProgressElement, ProgressProps>(
+  ({ className, children, value, max = 100, variant, ...rest }, ref) => {
+    return (
+      <progress
+        {...rest}
+        className={clsx(className, 'progress', variant && variants[variant])}
+        value={value}
+        max={max}
+        ref={ref}
+      />
+    )
+  }
+)

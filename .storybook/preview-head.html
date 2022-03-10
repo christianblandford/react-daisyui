@@ -8,15 +8,15 @@
 
     // Get/use initial or default values
     const defaultTheme = 'light'
-    let cachedTheme = window.localStorage.getItem('react-daisyui-preview-theme') || defaultTheme
+    let cachedTheme = window.localStorage.getItem('react-daisyui-preview-theme') ?? defaultTheme
     document.documentElement.setAttribute('data-theme', cachedTheme)
 
     // Listen for changes to localstorage
     window.addEventListener('storage', () => {
-        const theme = window.localStorage.getItem('react-daisyui-preview-theme')
+        let theme = window.localStorage.getItem('react-daisyui-preview-theme')
         if (theme !== cachedTheme) {
             // Update data-theme attribute
-            document.documentElement.setAttribute('data-theme', theme || defaultTheme)
+            document.documentElement.setAttribute('data-theme', theme ?? defaultTheme)
             // update theme variable to the new theme
             cachedTheme = theme || defaultTheme
         }

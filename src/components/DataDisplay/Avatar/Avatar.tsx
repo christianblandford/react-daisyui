@@ -10,23 +10,26 @@ export type AvatarProps = {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const Avatar = ({ className, children, placeholder, online, ...rest }: AvatarProps) => {
-  let onlineIndicatorClass
-  if (online !== undefined) {
-    onlineIndicatorClass = online ? 'online' : 'offline'
-  }
+export const Avatar = React.forwardRef<HTMLDivElement, AvatarProps>(
+  ({ className, children, placeholder, online, ...rest }, ref) => {
+    let onlineIndicatorClass
+    if (online !== undefined) {
+      onlineIndicatorClass = online ? 'online' : 'offline'
+    }
 
-  return (
-    <div
-      {...rest}
-      className={clsx(
-        className,
-        'avatar',
-        placeholder && 'placeholder',
-        onlineIndicatorClass && onlineIndicatorClass
-      )}
-    >
-      {children}
-    </div>
-  )
-}
+    return (
+      <div
+        {...rest}
+        className={clsx(
+          className,
+          'avatar',
+          placeholder && 'placeholder',
+          onlineIndicatorClass && onlineIndicatorClass
+        )}
+        ref={ref}
+      >
+        {children}
+      </div>
+    )
+  }
+)

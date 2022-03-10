@@ -1,4 +1,4 @@
-import { ClipboardCheckIcon } from '@heroicons/react/outline'
+import { ArrowRightIcon, ClipboardCheckIcon } from '@heroicons/react/outline'
 import { Meta, Story } from '@storybook/react'
 
 import { Button } from '../'
@@ -95,7 +95,20 @@ Wide.args = { children: 'Wide Button', wide: true }
 export const Icon = Template.bind({})
 Icon.args = {
   children: 'Button With Icon',
-  icon: <ClipboardCheckIcon className="h-6 w-6" />,
+  startIcon: <ClipboardCheckIcon className="h-6 w-6" />,
+}
+
+export const IconAtEnd = Template.bind({})
+IconAtEnd.args = {
+  children: 'Button With Icon',
+  endIcon: <ClipboardCheckIcon className="h-6 w-6" />,
+}
+
+export const TwoIcons = Template.bind({})
+TwoIcons.args = {
+  children: 'Button With Icon',
+  startIcon: <ClipboardCheckIcon className="h-6 w-6" />,
+  endIcon: <ArrowRightIcon className="h-6 w-6" />,
 }
 
 export const Loading = Template.bind({})
@@ -109,6 +122,13 @@ Disabled.args = {
   children: 'Disabled Button',
   disabled: true,
 }
+
+export const WithHref = Template.bind({})
+WithHref.args = {
+  href: 'https://www.google.com',
+  children: 'Link Button',
+}
+WithHref.storyName = 'With href, renders as <a>'
 
 export const NoClickAnimation = Template.bind({})
 NoClickAnimation.args = {

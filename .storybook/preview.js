@@ -1,4 +1,5 @@
-import '../tailwind.css';
+import '../tailwind.css'
+import '../style.css'
 
 // https://storybook.js.org/docs/react/writing-stories/parameters#global-parameters
 export const parameters = {
@@ -6,11 +7,13 @@ export const parameters = {
   actions: { argTypesRegex: '^on.*' },
   themes: {
     default: 'light',
-    onChange: (theme) =>
-      window.localStorage.setItem(
-        'react-daisyui-preview-theme',
-        theme ? theme.class : undefined
-      ),
+    onChange: (theme) => {
+      if (theme) {
+        window.localStorage.setItem('react-daisyui-preview-theme', theme.class)
+      } else {
+        window.localStorage.removeItem('react-daisyui-preview-theme')
+      }
+    },
     list: [
       { name: 'light', class: 'light', color: '#570df8' },
       { name: 'dark', class: 'dark', color: '#793ef9' },
@@ -40,4 +43,4 @@ export const parameters = {
       { name: 'lemonade', class: 'lemonade', color: '#519903' },
     ],
   },
-};
+}

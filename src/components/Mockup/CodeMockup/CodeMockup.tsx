@@ -8,11 +8,16 @@ export type CodeMockupProps = {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const CodeMockup = ({ className, children, ...rest }: CodeMockupProps) => {
-  return (
-    <div {...rest} className={clsx(className, 'mockup-code')}>
-      {children}
-    </div>
-  )
-}
-CodeMockup.Line = CodeMockupLine
+const CodeMockup = React.forwardRef<HTMLDivElement, CodeMockupProps>(
+  ({ className, children, ...rest }, ref) => {
+    return (
+      <div {...rest} className={clsx(className, 'mockup-code')} ref={ref}>
+        {children}
+      </div>
+    )
+  }
+)
+
+const CodeMockupNamespace = Object.assign(CodeMockup, { Line: CodeMockupLine })
+
+export { CodeMockupNamespace as CodeMockup }

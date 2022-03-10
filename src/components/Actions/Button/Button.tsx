@@ -11,6 +11,7 @@ const sizes = {
 }
 
 const shapes = {
+  rectangle: '',
   square: 'btn-square',
   circle: 'btn-circle',
 }
@@ -45,35 +46,42 @@ export type ButtonProps = ElementWithTooltipProps & {
   onClick?: () => void
   type?: 'button' | 'submit' | 'reset'
   children: React.ReactNode | string
-  icon?: React.ReactNode
-  iconPosition?: 'start' | 'end'
+  startIcon?: React.ReactNode
+  endIcon?: React.ReactNode
+  href?: string
 }
 
-export const Button = ({
-  block = false,
-  className,
-  variant,
-  size = 'md',
-  wide = false,
-  isLoading = false,
-  shape,
-  noAnimation = false,
-  active = false,
-  outline = false,
-  disabled = false,
-  type = 'button',
-  icon,
-  iconPosition = 'start',
-  tooltipForceOpen,
-  tooltipPosition,
-  tooltipText,
-  tooltipVariant,
-  onClick,
-  children,
-}: ButtonProps) => {
-  const button = (
-    <button
-      className={clsx(
+export const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
+  (
+    {
+      block = false,
+      className,
+      variant,
+      size = 'md',
+      wide = false,
+      isLoading = false,
+      shape,
+      noAnimation = false,
+      active = false,
+      outline = false,
+      disabled = false,
+      type = 'button',
+      startIcon,
+      endIcon,
+      tooltipForceOpen,
+      tooltipPosition,
+      tooltipText,
+      tooltipVariant,
+      onClick,
+      href,
+      children,
+      ...rest
+    },
+    ref
+  ) => {
+    const elementProps = {
+      ...rest,
+      className: clsx(
         'btn text-white focus:outline-none',
         block && 'btn-block',
         wide && 'btn-wide',
@@ -84,31 +92,41 @@ export const Button = ({
         isLoading && 'loading',
         noAnimation && 'no-animation',
         active && 'btn-active',
-        icon && 'gap-2',
+        (startIcon || endIcon) && 'gap-2',
         className && className
-      )}
-      onClick={() => !disabled && onClick && onClick()}
-      disabled={disabled}
-      type={type}
-    >
-      {icon && iconPosition === 'start' && icon}
-      {children}
-      {icon && iconPosition === 'end' && icon}
-    </button>
-  )
+      ),
+      onClick: () => !disabled && onClick && onClick(),
+      disabled: disabled,
+      type: type,
+    }
 
-  if (!tooltipText) {
-    return button
-  } else {
-    return (
-      <Tooltip
-        position={tooltipPosition}
-        variant={tooltipVariant}
-        forceOpen={tooltipForceOpen}
-        text={tooltipText}
-      >
-        {button}
-      </Tooltip>
+    const button = href ? (
+      <a {...elementProps} href={href} ref={ref as any as React.Ref<HTMLAnchorElement>}>
+        {startIcon && startIcon}
+        {children}
+        {endIcon && endIcon}
+      </a>
+    ) : (
+      <button {...elementProps} ref={ref as any as React.Ref<HTMLButtonElement>}>
+        {startIcon && startIcon}
+        {children}
+        {endIcon && endIcon}
+      </button>
     )
+
+    if (!tooltipText) {
+      return button
+    } else {
+      return (
+        <Tooltip
+          position={tooltipPosition}
+          variant={tooltipVariant}
+          forceOpen={tooltipForceOpen}
+          text={tooltipText}
+        >
+          {button}
+        </Tooltip>
+      )
+    }
   }
-}
+)

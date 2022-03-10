@@ -22,29 +22,26 @@ export type TextareaProps = {
   disabled?: boolean
 }
 
-export const Textarea = ({
-  variant,
-  bordered,
-  placeholder,
-  className,
-  value,
-  onChange,
-  disabled = false,
-  ...rest
-}: TextareaProps) => {
-  return (
-    <textarea
-      {...rest}
-      className={clsx(
-        className,
-        'textarea',
-        bordered && 'textarea-bordered',
-        variant && variants[variant]
-      )}
-      placeholder={placeholder}
-      value={value}
-      onChange={onChange}
-      disabled={disabled}
-    />
-  )
-}
+export const Textarea = React.forwardRef<HTMLTextAreaElement, TextareaProps>(
+  (
+    { variant, bordered, placeholder, className, value, onChange, disabled = false, ...rest },
+    ref
+  ) => {
+    return (
+      <textarea
+        {...rest}
+        className={clsx(
+          className,
+          'textarea',
+          bordered && 'textarea-bordered',
+          variant && variants[variant]
+        )}
+        placeholder={placeholder}
+        value={value}
+        onChange={onChange}
+        disabled={disabled}
+        ref={ref}
+      />
+    )
+  }
+)

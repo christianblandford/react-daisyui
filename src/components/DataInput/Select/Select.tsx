@@ -37,56 +37,62 @@ export type SelectProps = {
   disabled?: boolean
 }
 
-export const Select = ({
-  options,
-  value,
-  onChange,
-  disabled = false,
-  placeholder,
-  variant,
-  bordered = false,
-  size,
-  className,
-  ...rest
-}: SelectProps) => {
-  if (value && !options.includes(value)) {
-    throw new Error('Select options array does not contain the provided value.')
+export const Select = React.forwardRef<HTMLSelectElement, SelectProps>(
+  (
+    {
+      options,
+      value,
+      onChange,
+      disabled = false,
+      placeholder,
+      variant,
+      bordered = false,
+      size,
+      className,
+      ...rest
+    },
+    ref
+  ) => {
+    if (value && !options.includes(value)) {
+      throw new Error('Select options array does not contain the provided value.')
+    }
+
+    // Generate keys for each option, memoize to prevent re-rendering
+    const memoizedKeys = React.useMemo(() => options.map(() => nanoid()), [options])
+
+    const valueIndex = value ? options.indexOf(value) : 'default'
+
+    const handleChange = (stringIndex: string) => {
+      const index = parseInt(stringIndex)
+      onChange({ index, value: options[index] })
+    }
+
+    return (
+      <select
+        {...rest}
+        value={valueIndex}
+        onChange={(e) => handleChange(e.target.value)}
+        className={clsx(
+          className,
+          'select',
+          variant && variants[variant],
+          size && sizes[size],
+          bordered && 'select-bordered'
+        )}
+        disabled={disabled}
+        ref={ref}
+      >
+        {placeholder && (
+          <option value="default" disabled hidden>
+            {placeholder}
+          </option>
+        )}
+        {options.map((item, index) => (
+          <option key={memoizedKeys[index]} value={index}>
+            {item}
+          </option>
+        ))}
+      </select>
+    )
   }
-
-  // Generate keys for each option, memoize to prevent re-rendering
-  const memoizedKeys = React.useMemo(() => options.map(() => nanoid()), [options])
-
-  const valueIndex = value ? options.indexOf(value) : 'default'
-
-  const handleChange = (stringIndex: string) => {
-    const index = parseInt(stringIndex)
-    onChange({ index, value: options[index] })
-  }
-
-  return (
-    <select
-      {...rest}
-      value={valueIndex}
-      onChange={(e) => handleChange(e.target.value)}
-      className={clsx(
-        className,
-        'select',
-        variant && variants[variant],
-        size && sizes[size],
-        bordered && 'select-bordered'
-      )}
-      disabled={disabled}
-    >
-      {placeholder && (
-        <option value="default" disabled hidden>
-          {placeholder}
-        </option>
-      )}
-      {options.map((item, index) => (
-        <option key={memoizedKeys[index]} value={index}>
-          {item}
-        </option>
-      ))}
-    </select>
-  )
-}
+)

@@ -8,15 +8,16 @@ export type StatDescriptionProps = {
   children?: React.ReactNode
 }
 
-export const StatDescription = ({
-  className,
-  variant,
-  children,
-  ...rest
-}: StatDescriptionProps) => {
-  return (
-    <div {...rest} className={twMerge(className, 'stat-desc', variant && variants[variant])}>
-      {children}
-    </div>
-  )
-}
+export const StatDescription = React.forwardRef<HTMLDivElement, StatDescriptionProps>(
+  ({ className, variant, children, ...rest }, ref) => {
+    return (
+      <div
+        {...rest}
+        className={twMerge(className, 'stat-desc', variant && variants[variant])}
+        ref={ref}
+      >
+        {children}
+      </div>
+    )
+  }
+)

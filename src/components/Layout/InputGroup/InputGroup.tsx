@@ -17,18 +17,21 @@ export type InputGroupProps = {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const InputGroup = ({ size, vertical, className, children, ...rest }: InputGroupProps) => {
-  return (
-    <label
-      {...rest}
-      className={clsx(
-        className,
-        'input-group',
-        vertical && 'input-group-vertical',
-        size && sizes[size]
-      )}
-    >
-      {children}
-    </label>
-  )
-}
+export const InputGroup = React.forwardRef<HTMLLabelElement, InputGroupProps>(
+  ({ size, vertical, className, children, ...rest }, ref) => {
+    return (
+      <label
+        {...rest}
+        className={clsx(
+          className,
+          'input-group',
+          vertical && 'input-group-vertical',
+          size && sizes[size]
+        )}
+        ref={ref}
+      >
+        {children}
+      </label>
+    )
+  }
+)

@@ -24,22 +24,17 @@ export type ToggleProps = {
   className?: string
 }
 
-export const Toggle = ({
-  checked,
-  onChange,
-  variant,
-  size,
-  className,
-  children,
-  ...rest
-}: ToggleProps) => {
-  return (
-    <input
-      {...rest}
-      type="checkbox"
-      className={clsx(className, 'toggle', variant && variants[variant], size && sizes[size])}
-      checked={checked}
-      onChange={(e) => onChange(e.target.checked)}
-    />
-  )
-}
+export const Toggle = React.forwardRef<HTMLInputElement, ToggleProps>(
+  ({ checked, onChange, variant, size, className, children, ...rest }, ref) => {
+    return (
+      <input
+        {...rest}
+        type="checkbox"
+        className={clsx(className, 'toggle', variant && variants[variant], size && sizes[size])}
+        checked={checked}
+        onChange={(e) => onChange(e.target.checked)}
+        ref={ref}
+      />
+    )
+  }
+)

@@ -19,26 +19,22 @@ export type ArtboardProps = {
 }
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars
-export const Artboard = ({
-  size,
-  horizontal,
-  demo,
-  className,
-  children,
-  ...rest
-}: ArtboardProps) => {
-  return (
-    <div
-      {...rest}
-      className={clsx(
-        className,
-        'artboard',
-        size && artboardSizes[size],
-        demo && 'artboard-demo',
-        horizontal && 'artboard-horizontal'
-      )}
-    >
-      {children}
-    </div>
-  )
-}
+export const Artboard = React.forwardRef<HTMLDivElement, ArtboardProps>(
+  ({ size, horizontal, demo, className, children, ...rest }, ref) => {
+    return (
+      <div
+        {...rest}
+        className={clsx(
+          className,
+          'artboard',
+          size && artboardSizes[size],
+          demo && 'artboard-demo',
+          horizontal && 'artboard-horizontal'
+        )}
+        ref={ref}
+      >
+        {children}
+      </div>
+    )
+  }
+)
