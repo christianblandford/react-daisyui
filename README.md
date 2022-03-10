@@ -137,4 +137,6 @@ Ensure you export the component, at the right levels, or it will not be availabl
 
 ## Create a new release
 
+Add files to git and commit. You do not have to push to the remote, the release command can handle this for you.
+
 `yarn release`
